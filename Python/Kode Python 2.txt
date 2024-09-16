@@ -1,0 +1,97 @@
+
+import numpy as np
+import time as time 
+#import Pin as Pin
+#np
+#Pin
+#time
+
+
+
+def move_up():
+    print("up")
+    return
+
+def move_down():
+    print("down")
+    return
+
+def move_left():
+    print("left")
+    return
+
+def move_right():
+    print("right")
+    return
+
+def reset():
+    print("reset")
+    return
+
+
+def printall(x,y,nx,ny,xd,yd):
+    print("")
+    print("---------------------")
+    print("")
+    print("current position: ", x, " ", y)
+    print("")
+    print("new position: ", nx, " ", ny)
+    print("")
+    print("position differential: ", xd, " ", yd)
+    print("")
+    print("---------------------")
+    print("")
+    
+x = 5
+
+
+
+
+
+
+def start():
+    #r=1
+    position_y = 0
+    position_x = 0
+    
+    new_position_x = 0
+    new_position_y = 0
+    
+    
+    position_x_diff = new_position_x - position_x
+    position_y_diff = new_position_y - position_y
+    
+    for i in range(x):
+        #if(r == 1):
+         #   r -= 1
+
+            new_position_x = np.random.randint(0,6)
+            new_position_y = np.random.randint(0,6)
+            position_x_diff = new_position_x - position_x
+            position_y_diff = new_position_y - position_y
+            printall(position_x , position_y, new_position_x, new_position_y, position_x_diff, position_y_diff)
+            
+            for j in range(np.abs(position_x_diff)):
+                if (position_x_diff > 0 ): 
+                    move_right()
+                elif (position_x_diff < 0 ):
+                    move_left()
+                j += j
+                time.sleep(0.8)
+            for k in range(np.abs(position_y_diff)):
+                if (position_y_diff > 0 ):
+                    move_up()
+                elif(position_y_diff < 0 ):
+                    move_down()
+                k += k
+                time.sleep(0.8)
+                
+            position_x = new_position_x
+            position_y = new_position_y
+            
+ 
+            i += i
+
+        
+
+start()

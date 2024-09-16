@@ -1,0 +1,93 @@
+import numpy as np
+import time as time 
+#import Pin as Pin
+#np
+#Pin
+#time
+
+
+
+def move_up():
+    print("up")
+    return
+
+def move_down():
+    print("down")
+    return
+
+def move_left():
+    print("left")
+    return
+
+def move_right():
+    print("right")
+    return
+
+def reset():
+    print("reset")
+    return
+
+x = 5
+
+max = 3
+
+
+def start(diffyculty):
+    position_y = 0
+    position_x = 0
+    print ("x = ", position_x, "y = ", position_y)
+    print ("")
+    for i in range(x):
+        for j in range(np.random.randint(2,7)):
+            move_rng = np.random.randint(1,5)
+            
+            if(move_rng == 1):
+                
+                if(position_y == 5):
+                    move_down()
+                    position_y -= 1
+                else:
+                    move_up()
+                    position_y += 1
+                
+            elif(move_rng == 2):
+                
+                if(position_y == 0):
+                    move_up()
+                    position_y += 1
+                else:    
+                    move_down()
+                    position_y -= 1
+                
+            elif(move_rng == 3):
+                
+                if (position_x == 0):
+                    move_right()
+                    position_x += 1
+                else:
+                    move_left()
+                    position_x -= 1
+                
+            elif (move_rng == 4):
+                if (position_x == 5):
+                    move_down()
+                    position_x -= 1
+                else:
+                    move_right()
+                    position_x += 1
+                
+            time.sleep(1)
+            reset()
+            time.sleep(0.5)
+            print("")
+            j += j
+        print("")
+        print("sekvens ferdig, nr ", i + 1 )
+        print ("x = ", position_x, "y = ", position_y)
+        print("")
+        time.sleep(2)    
+        i += i 
+    return            
+
+
+start(1)
