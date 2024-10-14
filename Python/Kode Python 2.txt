@@ -1,33 +1,23 @@
-
 import numpy as np
-import time as time 
-#import Pin as Pin
-#np
-#Pin
-#time
+import array as arr
+import time as time
+import matplotlib.pyplot as plt
 
 
 
-def move_up():
-    print("up")
-    return
+def Amove(z):
+    print (z ,"| A motor steps")
+    
+def Bmove(z):
+    print (z ,"| B motor steps")
 
-def move_down():
-    print("down")
-    return
+def deltaA(delX, delY):
+    return delX + delY
 
-def move_left():
-    print("left")
-    return
+def deltaB(delX, delY):
+    return delX - delY
 
-def move_right():
-    print("right")
-    return
-
-def reset():
-    print("reset")
-    return
-
+x = 5
 
 def printall(x,y,nx,ny,xd,yd):
     print("")
@@ -39,23 +29,20 @@ def printall(x,y,nx,ny,xd,yd):
     print("")
     print("position differential: ", xd, " ", yd)
     print("")
-    print("---------------------")
-    print("")
     
-x = 5
-
-
 
 
 
 
 def start():
-    #r=1
     position_y = 0
     position_x = 0
     
     new_position_x = 0
     new_position_y = 0
+    
+    motorAmovement = 0
+    motorBmovement = 0
     
     
     position_x_diff = new_position_x - position_x
@@ -64,34 +51,25 @@ def start():
     for i in range(x):
         #if(r == 1):
          #   r -= 1
-
-            new_position_x = np.random.randint(0,6)
-            new_position_y = np.random.randint(0,6)
+            
+            new_position_x = np.random.randint(0,40)
+            new_position_y = np.random.randint(0,40)
             position_x_diff = new_position_x - position_x
             position_y_diff = new_position_y - position_y
             printall(position_x , position_y, new_position_x, new_position_y, position_x_diff, position_y_diff)
             
-            for j in range(np.abs(position_x_diff)):
-                if (position_x_diff > 0 ): 
-                    move_right()
-                elif (position_x_diff < 0 ):
-                    move_left()
-                j += j
-                time.sleep(0.8)
-            for k in range(np.abs(position_y_diff)):
-                if (position_y_diff > 0 ):
-                    move_up()
-                elif(position_y_diff < 0 ):
-                    move_down()
-                k += k
-                time.sleep(0.8)
+            motorAmovement = deltaA(position_x_diff, position_y_diff)
+            motorBmovement = deltaB(position_x_diff, position_y_diff)
+            
+            Amove(motorAmovement)
+            Bmove(motorBmovement)
+            print ("")
+            print ("-----------------")
+            print ("")
                 
             position_x = new_position_x
             position_y = new_position_y
-            
+            time.sleep(1)
  
             i += i
-
-        
-
 start()
